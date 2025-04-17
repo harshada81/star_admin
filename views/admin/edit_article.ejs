@@ -1,0 +1,48 @@
+<%- include("navbar.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Article</title>
+    <link rel="stylesheet" href="/admin_assets/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Edit Article</h2>
+
+        <!-- 📌 Edit Article Form -->
+        <form action="/admin/update_article/<%= article.id %>" method="POST" enctype="multipart/form-data" class="p-4 border rounded">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= article.title %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category" name="category" value="<%= article.category %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" value="<%= article.date %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="4" required><%= article.content %></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Current Image</label><br>
+                <img src="/admin_assets/<%= article.image %>" alt="Article Image" width="100" class="border rounded">
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload New Image (optional)</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                <input type="hidden" name="old_image" value="<%= article.image %>">
+            </div>
+            <button type="submit" class="btn btn-success">Update</button>
+            <a href="/admin/articles" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
+
+<%- include("footer.ejs") %>

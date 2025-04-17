@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter OTP</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Add your CSS file -->
+</head>
+<body>
+    <div class="otp-container">
+        <h2>Enter OTP</h2>
+        <form action="/admin/verify_otp" method="post">
+            <label for="otp">OTP:</label>
+            <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+            <button type="submit">Verify OTP</button>
+        </form>
+        <p>Didn't receive OTP? <a href="/admin/forgot">Resend</a></p>
+    </div>
+</body>
+</html>

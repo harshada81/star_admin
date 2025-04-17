@@ -1,0 +1,61 @@
+<%- include("navbar.ejs"); %>
+
+<div class="container mt-5">
+    <h2>Mission & Vision</h2>
+
+    <!-- Add New Mission/Vision Form -->
+    <div class="card p-4 mb-4">
+        <h4>Add New Mission/Vision</h4>
+        <form action="/admin/save_mission_vision" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Type</label>
+                <select name="type" class="form-control" required>
+                    <option value="Mission">Mission</option>
+                    <option value="Vision">Vision</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
+    </div>
+
+    <!-- Mission & Vision List -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (mission_vision.length > 0) { %>
+                <% mission_vision.forEach(entry => { %>
+                    <tr>
+                        <td><%= entry.type %></td>
+                        <td><%= entry.title %></td>
+                        <td><%= entry.description %></td>
+                        <td>
+                            <a href="/admin/edit_mission_vision/<%= entry.id %>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/admin/delete_mission_vision/<%= entry.id %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4" class="text-center">No records found</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<%- include("footer.ejs"); %>

@@ -1,0 +1,333 @@
+<%- include("navbar.ejs") %>
+
+<style>
+    /* Background Styling */
+    #services {
+        background: linear-gradient(to right, #f9f9f9, #eef7ff);
+        padding: 60px 0;
+    }
+
+    /* Grid Layout */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    /* Service Items */
+    .card {
+        padding: 20px;
+       
+        background: white;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        max-width: 320px;
+        margin: auto;
+        height: 100px;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Card Image */
+    .card-img-top {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        margin: 15px auto;
+        transition: transform 0.3s ease;
+        background-size: cover;
+    }
+
+    .card:hover .card-img-top {
+        transform: scale(1.1);
+    }
+
+    /* Card Content */
+    .card-body {
+        text-align: center;
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        color:darkblue;
+        margin-bottom: 10px;
+    }
+
+    .card-title::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: deeppink;
+        margin: 5px auto 10px;
+    }
+
+    .card-text {
+        font-size: 15px;
+        color: #555;
+    }
+
+    .fw-bold {
+        color: darkblue;
+        font-weight: bold;
+    }
+    .services h2 ::after{
+        content: "";
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: deeppink;
+        margin: 5px auto 10px; 
+
+    }
+    
+    /* Dark Blue Heading */
+    .text-primary {
+        color: #004080 !important;
+    }
+
+    /* FAQ Button Styling */
+    .accordion-button {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+    .accordion-button:not(.collapsed) {
+        background-color: #004080 !important;
+        color: white;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .extra-features .row {
+            flex-direction: column-reverse;
+        }
+    }
+</style>
+
+<!-- Include Bootstrap (optional for styling) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Include AOS Library -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<!-- Services Section -->
+<section id="services" class="services py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Our Services</h2>
+            <p class="">We provide expert medical care for children with a compassionate approach.</p>
+        </div>
+
+        <div class="row">
+            <% services.forEach(function(service, index) { %>
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in" data-aos-delay="<%= index * 200 %>">
+                    <div class="card h-100">
+                        <img src="/admin_assets/<%= service.image1 %>" alt="<%= service.title1 %>" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= service.title1 %></h5>
+                            <p class="card-text"><%= service.description1 %></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in" data-aos-delay="<%= index * 400 %>">
+                    <div class="card h-100">
+                        <img src="/admin_assets/<%= service.image2 %>" alt="<%= service.title2 %>" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= service.title2 %></h5>
+                            <p class="card-text"><%= service.description2 %></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in" data-aos-delay="<%= index * 600 %>">
+                    <div class="card h-100">
+                        <img src="/admin_assets/<%= service.image3 %>" alt="<%= service.title3 %>" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= service.title3 %></h5>
+                            <p class="card-text"><%= service.description3 %></p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- Include JS libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Initialize AOS animations
+    AOS.init({
+        duration: 1200,
+        easing: 'ease',
+        once: true,
+        mirror: false,
+    });
+</script>
+
+<!-- Ambulance Section -->
+<section class="ambulance container my-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">Ambulance Services</h2>
+        <p class="text-dark">Emergency ambulance services available 24/7.</p>
+    </div>
+    <div class="row">
+        <% ambulances.forEach(function(ambulance, index) { %>
+            <div class="col-md-12 mb-4">
+                <div class="row align-items-center shadow-sm p-3 rounded"
+                     data-aos="<%= index % 2 === 0 ? 'fade-right' : 'fade-left' %>"
+                     data-aos-delay="<%= index * 200 %>">
+                     
+                    <!-- Left Side: Image -->
+                    <div class="col-md-5 text-center">
+                        <img src="/admin_assets/<%= ambulance.image %>"
+                             class="img-fluid rounded shadow"
+                             alt="<%= ambulance.name %>"
+                             style="max-height: 250px; object-fit: cover;">
+                    </div>
+
+                    <!-- Right Side: Information -->
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold " style="color: darkblue;"><%= ambulance.name %></h5>
+                            <!-- <hr style="border: 2px solid deeppink; width: 50px;"> -->
+                            <p class="card-text-dark"><strong style="color: deeppink;">📞 Contact:</strong> <%= ambulance.contact_number %></p>
+                            <p class="card-text-dark"><strong style="color: deeppink;">🚑 Service Type:</strong> <%= ambulance.service_type %></p>
+                            <p class="card-text-dark"><%= ambulance.description %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</section>
+
+<!-- Include JS libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Initialize AOS animations
+    AOS.init({
+        duration: 1200,
+        easing: 'ease',
+        once: true,
+        mirror: false,
+    });
+</script>
+
+<!-- Extra Features Section -->
+<section class="extra-features py-5 ">
+    <div class="container">
+        <h2 class="section-title text-center text-primary fw-bold" data-aos="fade-up">Extra Features</h2>
+
+        <div class="row align-items-center">
+            <!-- FAQs Section -->
+            <div class="col-md-12" data-aos="fade-right">
+                <h3 class="sub-title  fw-bold">Frequently Asked Questions</h3>
+                <div class="accordion" id="faqAccordion">
+                    <% faqs.forEach(faqs => { %>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqs<%= faqs.id %>">
+                                    <%= faqs.question %>
+                                </button>
+                            </h2>
+                            <div id="faqs<%= faqs.id %>" class="accordion-collapse collapse">
+                                <div class="accordion-body"><%= faqs.answer %></div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+
+            <!-- Image Section -->
+            <!-- <div class="col-md-6 text-center" data-aos="fade-left">
+                <img src="/admin_assets/faq.jpg" 
+                     class="faq-image img-fluid rounded shadow-lg" 
+                     alt="FAQ Image">
+            </div> -->
+        </div>
+    </div>
+</section>
+
+<!-- AOS Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        easing: "ease-in-out",
+        once: true
+    });
+</script>
+
+<style>
+    /* White Background */
+    .bg-white {
+        background-color: white !important;
+    }
+.sub-title{
+    color: deeppink;
+}
+    .extra-features{
+        background-color: white;
+    }
+
+    /* Dark Blue Heading */
+    .text-primary {
+        color:darkblue !important;
+        margin-bottom: 10px;
+    }
+
+    /* FAQ Button Styling */
+    .accordion-button {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+    .accordion-button:not(.collapsed) {
+        background-color: #004080 !important;
+        color: white;
+    }
+
+    /* Smaller Image */
+    .faq-image {
+        max-width: 40%;
+        height: auto;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .extra-features .row {
+            flex-direction: column-reverse;
+        }
+        .faq-image {
+            max-width: 60%;
+        }
+    }
+</style>
+
+
+
+<%- include("footer.ejs") %>
+
+
+

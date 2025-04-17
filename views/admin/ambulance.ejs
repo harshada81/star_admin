@@ -1,0 +1,163 @@
+
+<%- include("navbar.ejs") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Services</title>
+    <style>
+       
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form Styling */
+        .form-box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .ambulance-img {
+            width: 80px;
+            border-radius: 5px;
+        }
+
+        /* Delete Button */
+        .delete-btn {
+            color: red;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .delete-btn:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Ambulance Services</h2>
+
+        <!-- 🚑 Form to Add Ambulance -->
+        <form action="/admin/save_ambulance" method="POST" enctype="multipart/form-data" class="form-box">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Contact Number:</label>
+            <input type="text" name="contact_number" required>
+
+            <label>Service Type:</label>
+            <input type="text" name="service_type" required>
+
+            <label>Description:</label>
+            <textarea name="description" required></textarea>
+
+            <label>Image:</label>
+            <input type="file" name="image">
+
+            <button type="submit">Save Ambulance</button>
+        </form>
+
+        <hr>
+
+        <!-- 🚑 List of Ambulance Services -->
+        <h3>Ambulance List</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Service Type</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (ambulances.length > 0) { %>
+                    <% ambulances.forEach((ambulance) => { %>
+                        <tr>
+                            <td><%= ambulance.id %></td>
+                            <td><%= ambulance.name %></td>
+                            <td><%= ambulance.contact_number %></td>
+                            <td><%= ambulance.service_type %></td>
+                            <td><%= ambulance.description %></td>
+                            <td>
+                                <% if (ambulance.image) { %>
+                                    <img src="/admin_assets/<%= ambulance.image %>" class="ambulance-img">
+                                <% } else { %>
+                                    No Image
+                                <% } %>
+                            </td>
+                            <td>
+                                <a href="/admin/edit_ambulance/<%= ambulance.id %>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="/admin/delete_ambulance/<%= ambulance.id %>"  class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                            </td>
+                            
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="7">No ambulance services found.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
+
+
+<%- include("footer.ejs") %>

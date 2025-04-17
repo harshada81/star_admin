@@ -1,0 +1,53 @@
+   <div class="container mt-5">
+        <h2 class="text-center">Forgot Password</h2>
+
+        <!-- Step 1: Enter Email -->
+        <form id="emailForm">
+            <div class="mb-3">
+                <label for="email" class="form-label">Enter your Email</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="sendOTP()">Send OTP</button>
+        </form>
+
+        <!-- Step 2: Enter OTP and New Password -->
+        <form id="otpForm" class="mt-3" style="display:none;">
+            <div class="mb-3">
+                <label for="otp" class="form-label">Enter OTP</label>
+                <input type="text" id="otp" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="newPassword" class="form-label">New Password</label>
+                <input type="password" id="newPassword" class="form-control" required>
+            </div>
+            <button type="button" class="btn btn-success" onclick="resetPassword()">Reset Password</button>
+        </form>
+    </div>
+
+    <script>
+        function sendOTP() {
+            let email = document.getElementById("email").value;
+            fetch("/send-otp", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `email=${email}`
+            }).then(response => response.text())
+              .then(data => {
+                alert(data);
+                document.getElementById("otpForm").style.display = "block";
+            });
+        }
+
+        function resetPassword() {
+            let email = document.getElementById("email").value;
+            let otp = document.getElementById("otp").value;
+            let newPassword = document.getElementById("newPassword").value;
+            fetch("/reset-password", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `email=${email}&otp=${otp}&password=${newPassword}`
+            }).then(response => response.text())
+              .then(data => alert(data));
+        }
+    </script>
+

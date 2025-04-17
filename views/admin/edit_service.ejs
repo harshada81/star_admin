@@ -1,0 +1,25 @@
+<%- include("navbar.ejs") %>
+
+<div class="container mt-4">
+    <div class="form-box">
+        <h5 class="text-primary text-center">Edit Service</h5>
+        <form action="/admin/update_service" method="POST">
+            <input type="hidden" name="service_id" value="<%= service.id %>">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" name="title" class="form-control mb-3" value="<%= service.title %>" required>
+                    <textarea name="description" class="form-control" required><%= service.description %></textarea>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="icon" class="form-control mb-3" value="<%= service.icon %>" required>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success w-100">Update Service</button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+<%- include("footer.ejs") %>

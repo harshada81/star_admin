@@ -1,0 +1,77 @@
+<%- include("navbar.ejs"); %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Gallery Image</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<style>
+    
+    .edit-form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .edit-form label {
+        font-size: 16px;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .edit-form img {
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    input[type="file"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<body>
+
+    <h2>Edit Gallery Image</h2>
+
+    <form action="/admin/update_gallery/<%= gallery.id %>" method="POST" enctype="multipart/form-data" class="edit-form">
+        <label>Current Image:</label>
+        <img src="/admin_assets/<%= gallery.image %>" width="150" alt="Gallery Image">
+
+        <label>Upload New Image:</label>
+        <input type="file" name="image">
+
+        <button type="submit">Update</button>
+    </form>
+
+</body>
+</html>
+
+<%- include("footer.ejs"); %>

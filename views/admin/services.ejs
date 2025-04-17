@@ -1,0 +1,70 @@
+<%- include("navbar.ejs") %>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div class="container mt-4">
+    <!-- Add Service Form -->
+    <div class="form-box">
+        <h5 class="text-primary text-center">Add Service</h5>
+        <form action="/admin/save_service" method="POST">
+            <div class="row g-3">
+                <!-- Service Title & Description -->
+                <div class="col-md-6">
+                    <input type="text" name="title" class="form-control mb-3" placeholder="Service Title" required>
+                    <textarea name="description" class="form-control" placeholder="Service Description" required></textarea>
+                </div>
+
+                <!-- Icon -->
+                <div class="col-md-6">
+                    <input type="text" name="icon" class="form-control mb-3" placeholder="FontAwesome Icon Class (e.g., fa-user-md)" required>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary w-100">Save Service</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Services List -->
+    <div class="table-box mt-4">
+        <h6 class="text-primary text-center">Services List</h6>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-success">
+                    <tr>
+                        <th>SR NO</th>
+                        <th>Service Icon</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (services.length > 0) { %>
+                        <% for (let i = 0; i < services.length; i++) { %>
+                            <tr>
+                                <td><%= i + 1 %></td>
+                                <td><i class="<%= services[i].icon %>"></i></td>
+                                <td><%= services[i].title %></td>
+                                <td><%= services[i].description %></td>
+                                <td>
+                                    <a href="/admin/edit_service/<%= services[i].id %>" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="/admin/delete_service/<%= services[i].id %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this service?')">Delete</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="5" class="text-center">No services found</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include("footer.ejs") %>

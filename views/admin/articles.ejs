@@ -1,0 +1,92 @@
+
+
+
+
+<%- include("navbar.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Blog Articles</title>
+    <link rel="stylesheet" href="/admin_assets/css/bootstrap.min.css"> 
+</head>
+<style>
+    .article-img {
+        width: 100px; /* Set fixed width */
+        height: 100px; /* Set fixed height */
+        object-fit: cover; /* Ensures images fill the box while maintaining aspect ratio */
+        border-radius: 5px; /* Optional: Adds rounded corners */
+    }
+</style>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Manage Blog Articles</h2>
+
+        <!-- 📌 Article Form -->
+        <form action="/admin/save_article" method="POST" enctype="multipart/form-data" class="mb-4 p-4 border rounded">
+            <h4>Add New Article</h4>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category" name="category" required>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Image</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- 📌 Article List -->
+        <h4>All Articles</h4>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% articles.forEach(article => { %>
+                <tr>
+                    <td><%= article.id %></td>
+                    <td>
+                        <img src="/admin_assets/<%= article.image %>" alt="Article Image" class="article-img">
+                    </td>
+                    
+                    <td><%= article.title %></td>
+                    <td><%= article.category %></td>
+                    <td><%= article.date %></td>
+                    <td>
+                        <a href="/admin/edit_article/<%= article.id %>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/admin/delete_article/<%= article.id %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+
+<%- include("footer.ejs") %>
+
+

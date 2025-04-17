@@ -1,0 +1,32 @@
+<%- include("navbar.ejs"); %>
+
+<div class="container my-5">
+    <h2 class="section-title">Edit Review</h2>
+
+    <form class="review-form card p-4 shadow" action="/admin/update_review/<%= review.id %>" method="POST">
+        <div class="mb-3">
+            <label class="form-label">Reviewer Name:</label>
+            <input type="text" name="name" class="form-control" value="<%= review.name %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Reviewer Image URL:</label>
+            <input type="text" name="image_url" class="form-control" value="<%= review.image_url %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Review Text:</label>
+            <textarea name="review_text" class="form-control" rows="3" required><%= review.review_text %></textarea>
+        </div>
+
+        <!-- ✅ Star Rating Input -->
+        <div class="mb-3">
+            <label class="form-label">Rating (0 - 5):</label>
+            <input type="number" name="rating" class="form-control" step="0.1" min="0" max="5" value="<%= review.rating %>" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Review</button>
+    </form>
+</div>
+
+<%- include("footer.ejs"); %>

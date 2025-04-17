@@ -1,0 +1,58 @@
+<%- include("navbar.ejs") %>
+
+<style>
+    .team {
+        background-color: #f8f9fa;
+    }
+    .team h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: darkblue;
+       
+    }
+    .team-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        text-align: center;
+    }
+    .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .specialist-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border: 2px solid deeppink;
+    }
+</style>
+
+<section class="team py-5">
+    <div class="container">
+        <div class="row text-center mb-4">
+            <h2 class="text fw-bold" data-aos="fade-up">Meet Our Specialists</h2>
+        </div>
+
+        <div class="row">
+            <% specialists.forEach(function(specialist, index) { %>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                    <div class="team-card p-4 bg-white rounded shadow">
+                        <img src="/admin_assets/<%= specialist.image %>" class="img-fluid rounded-circle mb-3 specialist-img" alt="<%= specialist.name %>">
+                        <h5 class="fw-bold"><%= specialist.name %></h5>
+                        <p class="text-muted"><%= specialist.specialization %></p>
+                        <p class="bio-text"><%= specialist.description %></p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+<script>
+    AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true
+    });
+</script>
+
+<%- include("footer.ejs") %>

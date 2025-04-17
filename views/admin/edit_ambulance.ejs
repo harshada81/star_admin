@@ -1,0 +1,91 @@
+<%- include("navbar.ejs") %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Ambulance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .image-preview {
+            display: block;
+            margin-top: 10px;
+            max-width: 100px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Edit Ambulance</h2>
+
+        <form action="/admin/update_ambulance/<%= ambulance.id %>" method="POST" enctype="multipart/form-data">
+            <label>Name:</label>
+            <input type="text" name="name" value="<%= ambulance.name %>" required>
+
+            <label>Contact Number:</label>
+            <input type="text" name="contact_number" value="<%= ambulance.contact_number %>" required>
+
+            <label>Service Type:</label>
+            <input type="text" name="service_type" value="<%= ambulance.service_type %>" required>
+
+            <label>Description:</label>
+            <textarea name="description" required><%= ambulance.description %></textarea>
+
+            <label>Current Image:</label>
+            <% if (ambulance.image) { %>
+                <img src="/admin_assets/<%= ambulance.image %>" class="image-preview">
+            <% } else { %>
+                No Image
+            <% } %>
+
+            <label>Upload New Image:</label>
+            <input type="file" name="image">
+
+            <button type="submit">Update Ambulance</button>
+        </form>
+    </div>
+
+</body>
+</html>
+<%- include("footer.ejs") %>

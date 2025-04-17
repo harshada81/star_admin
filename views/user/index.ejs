@@ -1,0 +1,1085 @@
+<%- include("navbar.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home - Star Kidz Hospital</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+
+
+
+<style>
+
+
+/* 
+.carousel-item img {
+    width: 100%; 
+    height: auto;
+    max-height: 460px;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+@media (max-width: 768px) { 
+    .carousel-item img {
+        height: 200px; 
+        width: 100%;
+
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item img {
+        height: 200px; 
+        width: 200px;
+          background-size: cover;
+    }
+}
+
+
+.carousel-caption {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 80%;
+}
+
+.carousel-caption h5 {
+    color: deeppink;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+    .carousel-caption h5 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption h5 {
+        font-size: 1.8rem;
+    }
+}
+
+.carousel-caption p {
+    color: darkblue;
+    font-size: 1.2rem;
+}
+
+
+@media (max-width: 768px) {
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+.about {
+    margin-top: 20px;
+    padding: 60px 0;
+    text-align: center;
+    overflow: hidden;
+}
+.hed{
+    color: darkblue;
+}
+
+.about img {
+    width: 100%; 
+    max-width: 450px; 
+    height: 400px; 
+    margin-top: 20px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   }
+
+
+.about p {
+    max-width: 800px; 
+    margin: 0 auto 20px; 
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
+
+
+.about ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+    
+}
+
+
+.about ul li {
+    font-size: 20px;
+    color: deeppink;
+    opacity: 0;
+    
+    padding: 8px 0;
+    position: relative;
+}
+
+
+.about ul li::before {
+    content: "✔"; 
+    font-weight: bold;
+    color: green;
+    margin-right: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .about h1 {
+        font-size: 32px;
+    }
+    .about p {
+        padding: 0 20px;
+    }
+    .about ul li {
+        font-size: 18px;
+    }
+}
+.hed::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: deeppink;
+    margin: 10px auto 0;
+}
+
+.service-box {
+            background: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+.service h2{
+    color: darkblue;
+    font-weight: bold;
+}
+        .service-box i {
+            font-size: 40px;
+             color: #e91e63; 
+            margin-bottom: 15px;
+        }
+
+        .service-box h4 {
+            font-weight: bold;
+            font-size: 20px;
+            color: darkblue;
+        }
+
+        .service-box p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+        }
+
+      
+        .owl-dots {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .owl-dots .owl-dot {
+            height: 12px;
+            width: 12px;
+            margin: 5px;
+            background: #007bff;
+            border-radius: 50%;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .owl-dots .owl-dot.active {
+            background: #0056b3;
+            width: 15px;
+        }
+
+    
+        [data-aos] {
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+
+        [data-aos].aos-animate {
+            opacity: 1;
+        }
+        .doctor-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        } 
+        .doctor-card {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .doctor-name {
+            color: darkblue;
+            font-weight: bold;
+        }
+        .doctor-specialty{
+            color: deeppink;
+            font-weight: bold;
+        }
+        .btn{
+            background-color: darkblue;
+            color: white;
+        }
+        .doctor h2{
+            color: darkblue;
+            font-weight: bold;
+          
+            
+        }
+        .doctor{
+            margin-top: -30px;
+        }
+        
+        .articles-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .articles-section h2 {
+            font-size: 2.5rem;
+            color: #1b1b6d;
+            margin-bottom: 30px;
+            font-weight: bold;
+           
+        }
+
+        .articles-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .article-card {
+            background: white;
+            width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            overflow: hidden;
+            transition: transform 0.3s;
+            position: relative;
+            border-bottom-right-radius: 60px;
+            border-Top-left-radius: 60px;
+           
+        }
+     
+        .article-card:hover {
+            transform: scale(1.05);
+        }
+
+        .article-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 20px;
+        }
+
+        .article-category {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #ff4081; 
+            text-transform: uppercase;
+        }
+
+        .article-date {
+            font-size: 0.8rem;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .article-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1b1b6d;
+            margin-bottom: 10px;
+        }
+
+        .read-more {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #1b1b6d;
+            color: white;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .read-more:hover {
+            background-color: #ff4081; 
+        }
+
+        .view-all-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #1b1b6d; 
+            color: white;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .view-all-btn:hover {
+            background-color: #ff4081;
+        }
+  
+  
+
+
+.review-item {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.review-item:hover {
+    transform: scale(1.05);
+}
+
+.review-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.review-text {
+    font-size: 18px;
+    font-style: italic;
+    color: #555;
+}
+
+.review-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: darkblue;
+}
+
+.review-stars i {
+    color: gold;
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .review-item {
+        width: 100%;
+    }
+    .section-title{
+        color: darkblue;
+    }
+    .rev h2{
+        color: darkblue;
+    }
+    .awards-section p{
+        color: white;
+
+    }
+    .awards-section h2{
+        margin-top: -60px;
+        margin-left: 20px;
+
+    }
+}
+.review-item {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .review-item:hover {
+            transform: scale(1.05);
+        }
+        .review-name {
+            color: darkblue;
+            font-weight: bold;
+        }
+        .review-stars i {
+            color: gold;
+        }
+        .review-item {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .review-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+.section-subtitle{
+    color: deeppink;
+} */
+
+/*  Carousel Styles */
+.carousel-item img {
+    width: 100%; 
+    height: auto;
+    max-height: 460px;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+@media (max-width: 768px) { 
+    .carousel-item img {
+        height: 200px; 
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item img {
+        height: 200px; 
+        width: 100%;
+        background-size: cover;
+    }
+}
+
+/*  Carousel Caption Styles */
+.carousel-caption {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 80%;
+}
+
+.carousel-caption h5 {
+    color: deeppink;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .carousel-caption h5 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption h5 {
+        font-size: 1.8rem;
+    }
+}
+
+.carousel-caption p {
+    color: darkblue;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+}
+
+/*  About Us Section */
+.about {
+    margin-top: 20px;
+    padding: 60px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hed {
+    color: darkblue;
+}
+
+.about img {
+    width: 100%;
+    max-width: 450px;
+    height: 400px;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.about ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.about ul li {
+    font-size: 20px;
+    color: deeppink;
+    padding: 8px 0;
+    position: relative;
+}
+
+.about ul li::before {
+    content: "✔";
+    font-weight: bold;
+    color: green;
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .about h1 {
+        font-size: 32px;
+    }
+    .about p {
+        padding: 0 20px;
+    }
+    .about ul li {
+        font-size: 18px;
+    }
+}
+
+.hed::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: deeppink;
+    margin: 10px auto 0;
+}
+
+/*  Service Box Styles */
+.service-box {
+    background: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.service h2 {
+    color: darkblue;
+    font-weight: bold;
+}
+
+.service-box i {
+    font-size: 40px;
+    color: #e91e63;
+    margin-bottom: 15px;
+}
+
+.service-box h4 {
+    font-weight: bold;
+    font-size: 20px;
+    color: darkblue;
+}
+
+.service-box p {
+    font-size: 16px;
+    color: #555;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+}
+
+
+
+[data-aos] {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
+
+/*  Doctor Image Styles */
+.doctor-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.doctor-card {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-name {
+    color: darkblue;
+    font-weight: bold;
+}
+
+.doctor-specialty {
+    color: deeppink;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: darkblue;
+    color: white;
+}
+
+.doctor h2 {
+    color: darkblue;
+    font-weight: bold;
+}
+
+.doctor {
+    margin-top: -30px;
+}
+
+/*  Articles Section */
+.articles-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.articles-section h2 {
+    font-size: 2.5rem;
+    color: #1b1b6d;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.article-card {
+    background: white;
+    width: 320px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    overflow: hidden;
+    transition: transform 0.3s;
+    position: relative;
+    border-bottom-right-radius: 60px;
+    border-top-left-radius: 60px;
+}
+
+.article-card:hover {
+    transform: scale(1.05);
+}
+
+.article-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.article-content {
+    padding: 20px;
+}
+
+.article-category {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ff4081;
+    text-transform: uppercase;
+}
+
+.article-date {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+.article-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1b1b6d;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #1b1b6d;
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.read-more:hover {
+    background-color: #ff4081;
+}
+
+.view-all-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #1b1b6d;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.view-all-btn:hover {
+    background-color: #ff4081;
+}
+
+/*  Review Section */
+.review-item {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.review-item:hover {
+    transform: scale(1.05);
+}
+
+.review-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.review-text {
+    font-size: 18px;
+    font-style: italic;
+    color: #555;
+}
+
+.review-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: darkblue;
+}
+
+.review-stars i {
+    color: gold;
+    font-size: 18px;
+}
+
+/* 🌟 Mobile Adjustments */
+@media (max-width: 768px) {
+    .review-item {
+        width: 100%;
+    }
+
+    .section-title {
+        color: darkblue;
+    }
+
+    .rev h2 {
+        color: darkblue;
+    }
+
+    .awards-section p {
+        color: white;
+    }
+
+    .awards-section h2 {
+        margin-top: -60px;
+        margin-left: 20px;
+    }
+}
+
+.review-item {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.review-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.section-subtitle {
+    color: deeppink;
+}
+
+
+
+
+</style>
+<body>
+
+<!-- Slider Section -->
+<div class="container-fluid mb-5">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <% slider.forEach((slider, index) => { %>
+                <div class="carousel-item active" data-aos="fade-up">
+                    <img src="/admin_assets/<%= slider.img1 %>" class="d-block w-100" alt="Slide">
+                </div>
+                <div class="carousel-item" data-aos="fade-up">
+                    <img src="/admin_assets/<%= slider.img2 %>" class="d-block w-100" alt="Slide">
+                </div>
+                <div class="carousel-item" data-aos="fade-up">
+                    <img src="/admin_assets/<%= slider.img3 %>" class="d-block w-100" alt="Slide">
+                </div>
+            <% }); %>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+
+<!--  About Us Section -->
+<section class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" data-aos="fade-right">
+                <img src="/admin_assets/<%= about_us.image %>" class="img-fluid rounded" />
+            </div>
+            <div class="col-md-6" data-aos="fade-left">
+                <h1 class="hed"><%- about_us.heading %></h1>
+                <p><%- about_us.details %></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000, 
+        once: true 
+    });
+</script>
+
+
+
+<!-- 🟢 Service Section -->
+<section class="service py-5" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container">
+        <h2 class="hed text-center mb-4">OUR SERVICES</h2>
+        <p class="text-center" data-aos="fade-up">
+            At <strong class="sub">Star Kidz Hospital</strong>, we offer a range of specialized services to cater to children's healthcare needs.
+        </p>
+        
+        
+        <div class="owl-carousel service-slider">
+            <% services.forEach(service => { %>
+                <div class="service-box text-center p-4 shadow rounded" data-aos="zoom-in">
+                    <i class="<%= service.icon %> fa-3x mb-3"></i>
+                    <h4><%= service.title %></h4>
+                    <p><%= service.description %></p>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    AOS.init({
+        duration: 1000, 
+        once: true 
+    });
+
+    $(document).ready(function(){
+        $(".service-slider").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            responsive: {
+                0: { items: 1 },
+                600: { items: 2 },
+                1000: { items: 3 }
+            }
+        });
+    });
+</script>
+
+
+
+<!-- 🟢 Our Specialists Section -->
+<section class="doctor py-5" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container">
+        <h2 class="hed text-center mb-5">OUR SPECIALISTS</h2>
+        <div class="row align-items-center">
+            <!-- Left Side: Book Appointment Form -->
+            <div class="col-md-6">
+                <div class="p-4 border rounded shadow" data-aos="fade-right" data-aos-duration="1000">
+                    <h3 class="text-center" style="color: #e91e63;">Book an Appointment</h3>
+                    <form action="/save_appointments" method="post">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" name="full_name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="number" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Preferred Date</label>
+                            <input type="date" id="date" name="preferred_date" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+            
+
+            <!-- Right Side: Doctor Information -->
+            <div class="col-md-6">
+                <% if (specialists.length > 0) { %>
+                    <% specialists.forEach(specialist => { %>
+                    <div class="doctor-card p-3 border rounded shadow mb-3" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="row align-items-center">
+                            <div class="col-md-4 text-center">
+                                <img src="/admin_assets/<%= specialist.image %>" alt="<%= specialist.name %>" class="doctor-img img-fluid rounded-circle">
+                            </div>
+                            <div class="col-md-8">
+                                <h4 class="doctor-name mb-1"><%= specialist.name %></h4>
+                                <p class="doctor-specialty text-muted"><%= specialist.specialty %></p>
+                                <p class="doctor-qualification"><%= specialist.qualification %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                <% } else { %>
+                    <p class="text-center text-muted">No specialists available at the moment.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- 🟢 Articles Section -->
+<section class="articles-section py-5" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container">
+        <h2 class=" hed text-center mb-4">Latest Posts & Articles</h2>
+        <div class="row">
+            <% articles.forEach(article => { %>
+            <div class="col-md-4">
+                <div class="article-card shadow ">
+                    <img src="/admin_assets/<%= article.image %>" alt="<%= article.title %>" class="img-fluid rounded">
+                    <div class="article-content mt-3">
+                        <p class="article-category text-muted"><%= article.category %></p>
+                        <p class="article-date text-muted"><%= article.date %></p>
+                        <h3 class="article-title"><%= article.title %></h3>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/blogs" class="btn btn-darkblue">View All</a>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+</body>
+</html>
+<%- include("footer.ejs") %>

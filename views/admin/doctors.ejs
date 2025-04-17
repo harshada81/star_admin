@@ -1,0 +1,70 @@
+<%- include("navbar.ejs"); %>
+
+<div class="container mt-5">
+    <h2>Doctors</h2>
+
+    <!-- Add New Doctor Form -->
+    <div class="card p-4 mb-4">
+        <h4>Add New Doctor</h4>
+        <form action="/admin/save_doctor" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" name="image" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
+    </div>
+
+    <!-- Doctor List -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (doctors.length > 0) { %>
+                <% doctors.forEach(doctor => { %>
+                    <tr>
+                        <td><%= doctor.name %></td>
+                        <td><%= doctor.title %></td>
+                        <td><%= doctor.description %></td>
+                        <td>
+                            <% if (doctor.image) { %>
+                                <img src="/admin_assets/<%= doctor.image %>" width="80" height="80">
+                            <% } else { %>
+                                No Image
+                            <% } %>
+                        </td>
+                        <td>
+                            <a href="/admin/edit_doctor/<%= doctor.id %>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/admin/delete_doctor/<%= doctor.id %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr>
+                    <td colspan="5" class="text-center">No records found</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<%- include("footer.ejs"); %>

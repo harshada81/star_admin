@@ -1,0 +1,56 @@
+<%- include("navbar.ejs"); %>
+
+<div class="container mt-5">
+    <h2>Edit Service</h2>
+    <form action="/admin/update_service_org/<%= service.id %>" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label">Current Images</label><br>
+            <img src="/admin_assets/<%= service.image1 %>" width="50">
+            <img src="/admin_assets/<%= service.image2 %>" width="50">
+            <img src="/admin_assets/<%= service.image3 %>" width="50">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">New Image 1</label>
+            <input type="file" name="image1" class="form-control">
+            <input type="hidden" name="old_image1" value="<%= service.image1 %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">New Image 2</label>
+            <input type="file" name="image2" class="form-control">
+            <input type="hidden" name="old_image2" value="<%= service.image2 %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">New Image 3</label>
+            <input type="file" name="image3" class="form-control">
+            <input type="hidden" name="old_image3" value="<%= service.image3 %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Title 1</label>
+            <input type="text" name="title1" class="form-control" value="<%= service.title1 %>" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Title 2</label>
+            <input type="text" name="title2" class="form-control" value="<%= service.title2 %>" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Title 3</label>
+            <input type="text" name="title3" class="form-control" value="<%= service.title3 %>" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Description 1</label>
+            <textarea name="description1" class="form-control" required><%= service.description1 %></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Description 2</label>
+            <textarea name="description2" class="form-control" required><%= service.description2 %></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Description 3</label>
+            <textarea name="description3" class="form-control" required><%= service.description3 %></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/admin/services_org" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<%- include("footer.ejs"); %>

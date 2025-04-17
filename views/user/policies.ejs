@@ -1,0 +1,83 @@
+
+
+<%- include("navbar.ejs") %>
+
+<style>
+.policy-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .policy-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .policy-header h2 {
+            color: darkblue;
+            font-weight: bold;
+        }
+        .policy-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 5px solid #dc3545;
+            background: #fdfdfd;
+            border-radius: 5px;
+        }
+        .policy-section h4 {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .policy-section p {
+            text-align: justify;
+            line-height: 1.6;
+        }
+        .contact-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: darkblue;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+<div class="container my-5">
+    <section class="policy-container" data-aos="fade-up">
+        <div class="policy-header text-center">
+            <h2 data-aos="fade-down">Star Kidz Hospital Policies</h2>
+            <p class="text-muted" data-aos="fade-up">Ensuring Safety, Care, and Quality Treatment</p>
+        </div>
+
+        <% if (policies.length > 0) { %>
+            <% policies.forEach((policy, index) => { %>
+                <div class="policy-section" data-aos="<%= index % 2 === 0 ? 'fade-right' : 'fade-left' %>">
+                    <h4><%= index + 1 %>. <%= policy.title %></h4>
+                    <p><%= policy.description %></p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p class="text-center text-muted">No policies available at the moment.</p>
+        <% } %>
+
+        <div class="contact-section text-center" data-aos="zoom-in">
+            <h4>Need Help?</h4>
+            <p>Call us at <strong>(+123) 456-7890</strong> or visit our 
+                <a href="/contact" class="text-warning">Contact Page</a>.
+            </p>
+        </div>
+
+        <p class="text-center text-muted" data-aos="fade-up">
+            Thank you for trusting Star Kidz Hospital for your child's healthcare.
+        </p>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init(); // Initialize animations
+</script>
+
+<%- include("footer.ejs") %>

@@ -1,0 +1,52 @@
+<%- include("navbar.ejs"); %>
+
+<div class="container mt-5">
+    <h2>About Star Kidz Hospital</h2>
+
+    <!-- Add New About Info Form -->
+    <div class="card p-4 mb-4">
+        <h4>Add New About Info</h4>
+        <form action="/admin/save_about_info" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
+    </div>
+
+    <!-- About Info List -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (about.length > 0) { %>
+                <% about.forEach(entry => { %>
+                    <tr>
+                        <td><%= entry.title %></td>
+                        <td><%= entry.description %></td>
+                        <td>
+                            <a href="/admin/edit_about_info/<%= entry.id %>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/admin/delete_about_info/<%= entry.id %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr>
+                    <td colspan="3" class="text-center">No records found</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<%- include("footer.ejs"); %>
